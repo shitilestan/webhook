@@ -12,11 +12,6 @@ function curl($url, $datas = [])
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    if ($this->proxy) {
-        curl_setopt($ch, CURLOPT_PROXY, $this->proxy_uri . ":" . $this->proxy_port);
-        curl_setopt($ch, CURLOPT_PROXYUSERPWD, $this->proxy_user . ":" . $this->proxy_pass);
-        curl_setopt($ch, CURLOPT_PROXYTYPE, $this->proxy_type);
-    }
     curl_setopt($ch, CURLOPT_POSTFIELDS, $datas);
     $res = curl_exec($ch);
     if (curl_error($ch)) {
